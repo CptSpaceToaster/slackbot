@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/cptspacetoaster/slackbot/robots"
 	"github.com/gorilla/schema"
-	"github.com/trinchan/slackbot/robots"
 )
 
 func main() {
