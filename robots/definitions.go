@@ -40,6 +40,7 @@ var (
 )
 
 type IncomingWebhook struct {
+	Domain      string       `json:"domain"`
 	Channel     string       `json:"channel"`
 	Username    string       `json:"username"`
 	Text        string       `json:"text"`
@@ -78,9 +79,8 @@ type AttachmentField struct {
 }
 
 type Configuration struct {
-	Domain string `schema:"domain"`
-	Port   int    `schema:"port"`
-	Token  string `schema:"token"`
+	Port         int               `json:"port"`
+	DomainTokens map[string]string `json:"domain_tokens"`
 }
 
 type Robot interface {
