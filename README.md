@@ -27,13 +27,18 @@ The config file (config.json) has the following format:
 ```json
 {
     "port": PORT_FOR_BOT,
-    "domain_tokens": {
-        "YOUR_SLACK_DOMAIN":       "YOUR_SLACK_INCOMING_WEBHOOK_TOKEN",
-        "YOUR_OTHER_SLACK_DOMAIN": "MATCHING_INCOMING_WEBHOOK_TOKEN"
+    "tokens": {
+        "YOUR_SLACK_DOMAIN": {
+            "incoming_webhook_token": "YOUR_SLACK_INCOMING_WEBHOOK_TOKEN"
+        },
+        "YOUR_OTHER_SLACK_DOMAIN": {
+            "incoming_webhook_token": "MATCHING_INCOMING_WEBHOOK_TOKEN",
+            "api_token": "OPTIONAL_WEB_API_TOKEN"
+        }
     }
 }
 ```
-Note that the last "domain_token" does NOT have a comma at the end of the line (but the others do)
+Be careful with your commas, the parser doesn't like extra commas at the end of a clause.  The API token is optional, but required for the meme-bot to function.
 
 ###Send messages to your bot
 This framework can respond to "slash commands" and "outgoing webhooks"  If you want users to be able to silently type `/ping`, and have the ping-bot respond in their channel, then you'll want to set up "slash commands".  Each bot will need it's own command setup.  The other option is to configure an outgoing webhook with a symbol for the prefix. Exe: `!ping`.  This option only requires one configuration, but the commands will be entered into the channel as regular messages.

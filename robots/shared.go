@@ -19,6 +19,7 @@ var ConfigDirectory = flag.String("c", ".", "Configuration directory (default .)
 func init() {
 	flag.Parse()
 	configFile := filepath.Join(*ConfigDirectory, "config.json")
+	log.Printf("Using " + configFile)
 	config, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		log.Fatal("Error opening config: ", err)
@@ -29,7 +30,7 @@ func init() {
 		log.Fatal("Error parsing config: ", err)
 	}
 
-	log.Printf("Found %d domain configurations", len(Config.DomainTokens))
+	log.Printf("Found %d domain configurations", len(Config.Tokens))
 	log.Printf("Port: %d", Config.Port)
 }
 
@@ -43,7 +44,7 @@ func RegisterRobot(command string, r Robot) {
 }
 
 func (i *IncomingWebhook) Send() error {
-	if _, ok := Config.DomainTokens[i.Domain]; !ok {
+	if _, ok := Config.Tokens[i.Domain]; !ok {
 		err := errors.New(fmt.Sprintf("Domain: \"%s\" not found in configuration", i.Domain))
 		log.Print(err)
 		return err
@@ -62,7 +63,7 @@ func (i *IncomingWebhook) Send() error {
 
 	data := url.Values{}
 	data.Set("payload", string(p))
-	data.Set("token", Config.DomainTokens[i.Domain])
+	data.Set("token", Config.Tokens[i.Domain].IncomingWebhookToken)
 
 	webhook.RawQuery = data.Encode()
 	resp, err := http.PostForm(webhook.String(), data)
