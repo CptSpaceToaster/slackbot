@@ -57,6 +57,7 @@ func SlashCommandHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println("Couldn't parse post request:", err)
 	}
 	command.Robot = command.Command[1:]
+	log.Printf("Recieved command: %s %s from \"%s\"\n", command.Robot, command.Text, command.TeamDomain)
 	robot := GetRobot(command.Robot)
 	if robot == nil {
 		plainResp(w, "No robot for that command yet :(")
