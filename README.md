@@ -24,7 +24,7 @@ Assuming you've already pulled the source, and successfully compiled/installed, 
 
 The config file (config.json) has the following format:
 
-```json
+```
 {
     "port": PORT_FOR_BOT,
     "tokens": {
