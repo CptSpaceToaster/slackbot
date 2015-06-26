@@ -20,7 +20,7 @@ https://hooks.slack.com/services/AAAAAAAAA/BBBBBBBBB/YourSecretToken123456789
 That's really all you care about right now.  You can set the default Icon, Name, and default Channel, but slack will let you override that information in the http requests you send.  So don't worry yourself with setting everything up.  You just need the token.
 
 ###Create a Domain Configuration File
-Assuming you've already pulled the source, and successfully compiled/installed, you should have a `slackbot` executable in your `$GOPATH/bin`.  You need to create a file named `config.json` and give your bot the proper credentials to send messages to your slack server.  Feel free to place the file in the a sub-folder if you want to be all organized like that.  If you want to attach more than one slack server to your bot, you can simply add another entry under "domain_tokens".
+Assuming you've already pulled the source, and successfully compiled/installed, you should have a `slackbot` executable in your `$GOPATH/bin`.  You need to create a file named `config.json` and give your bot the proper credentials to send messages to your slack server.  Feel free to place the file in the a sub-folder if you want to be all organized like that.  If you want to attach more than one slack server to your bot, you can simply add another entry under "tokens".
 
 The config file (config.json) has the following format:
 
