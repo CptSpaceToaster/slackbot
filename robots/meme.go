@@ -57,7 +57,7 @@ func (w MemeBot) DeferredAction(p *Payload) {
 			user = "Meme Bot"
 		}
 
-		text = "http://memegen.link/" + args[0] + "/" + strings.Replace(strings.TrimSpace(args[1]), " ", "-", -1) + "/" + strings.Replace(strings.TrimSpace(args[2]), " ", "-", -1)
+		text = "http://memegen.link/" + strings.TrimSpace(args[0]) + "/" + strings.Replace(strings.TrimSpace(args[1]), " ", "-", -1) + "/" + strings.Replace(strings.TrimSpace(args[2]), " ", "-", -1)
 		meme.ImageURL = text + ".jpg"
 	} else {
 		user = "Meme Bot"
